@@ -12,6 +12,7 @@ RUN set -ex; \
         chromium-chromedriver \
         vim \
         python3 \
+        cqlsh \
         gh
 
 RUN apt-get clean
