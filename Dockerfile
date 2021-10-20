@@ -27,9 +27,6 @@ RUN chown -R gitpod:gitpod /workspace
 COPY --chown=gitpod:gitpod /root/config/.bashrc /home/gitpod/.bashrc.d/999-datastax
 USER gitpod
 
-# Pull in repo
-RUN git clone https://github.com/synedra/appdev-week2-tiktok /workspace/tik-tok-final
-
 RUN pip3 install httpie-astra
 
 EXPOSE 8888
