@@ -13,7 +13,6 @@ RUN set -ex; \
         chromium-chromedriver \
         vim \
         python3 \
-        cqlsh \
         gh
 
 RUN apt-get clean
@@ -29,7 +28,7 @@ RUN chown -R gitpod:gitpod /workspace
 # COPY --chown=gitpod:gitpod /root/config/.bashrc /home/gitpod/.bashrc.d/999-datastax
 USER gitpod
 
-RUN pip3 install httpie-astra
+RUN pip3 install httpie-astra cqlsh
 
 EXPOSE 8888
 EXPOSE 8443
