@@ -22,7 +22,7 @@ RUN curl -L https://deb.nodesource.com/setup_16.x | bash \
 RUN npm install -g astra-setup netlify-cli axios node-jq
 
 RUN sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
-RUN chmod 777 /usr/lib/node_modules/astra-setup/node_modules/node-jq/bin/jq
+#RUN chmod 777 /usr/lib/node_modules/astra-setup/node_modules/node-jq/bin/jq
 RUN chown -R gitpod:gitpod /workspace
 
 # COPY --chown=gitpod:gitpod /root/config/.bashrc /home/gitpod/.bashrc.d/999-datastax
