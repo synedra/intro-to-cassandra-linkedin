@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+			{
+			  "label": "Run netlify dev",
+			  "type": "shell",
+			  "command": "cd /workspace/astra-tik-tok; netlify dev",
+			  "group": "test",
+			  "presentation": {
+				"reveal": "always",
+				"panel": "new",
+				"group":"netlify"
+			  }
+			}
+	  ]
+}

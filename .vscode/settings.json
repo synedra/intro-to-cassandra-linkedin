@@ -1,0 +1,14 @@
+{
+    "workbench.editor.enablePreviewFromCodeNavigation": true,
+    "workbench.editor.enablePreviewFromQuickOpen": true,
+    "workbench.editor.enablePreview": true,
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor"
+    },
+    "auto-run-command.rules": [
+        {
+            "command": "codetour.startTour"
+        }
+    ]
+}
+
