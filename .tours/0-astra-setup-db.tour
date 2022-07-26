@@ -1,0 +1,11 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "1. Astra Getting Started",
+  "nextTour": "2. Creating Keyspaces and Tables",
+  "steps": [
+    {
+      "title": "Authentication",
+      "description": "## Initial Setup\n**RUN**\n>> astra-setup workshop linkedin\n\n>> set -o allexport; source .env; set +o allexport\n\n>> cqlsh\n\n[Visit Astra](https://astra.datastax.com) and follow the instructions in the console to get your token for the astra-setup step.\n\n![Image of Yaktocat](https://github.com/datastaxdevs/workshop-spring-stargate/raw/main/images/tutorials/astra-create-db.gif?raw=true)\n"
+    }
+  ]
+}

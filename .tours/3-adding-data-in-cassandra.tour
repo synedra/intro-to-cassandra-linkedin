@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "3. Adding Data to Cassandra",
+  "steps": [
+    {
+      "title": "Add new data",
+      "description": "## Adding rows in Cassandra\n\nLet's add some cavemen to our tables, and retrieve the information with queries.\n\nWe'll add Fred, Barney, Wilma and Betty so we have a few things to look at.  We'll work with various different methods of updating to see how they all work.\n\n### Simple insert for Fred\n\n>> INSERT INTO cavemen (lastname, firstname) VALUES ('Flintstone', 'Fred');\n\nRemember, you always need the partition key (in this case lastname) but you can ask for everything that matches your partition key.\n\n>> SELECT * from cavemen;\n\n### Inserting JSON Data\n\n>> INSERT INTO cavemen JSON '{\"lastname\" : \"Rubble\", \"firstname\" : \"Barney\" }';\n\nMake sure Barney made it in:\n\n>> SELECT * from cavemen;\n\n### Run a BATCH to add the wives\n\nWe'll add an occupation for these ladies, so we can explore making set queries.\n\n>> BEGIN BATCH\n\n>> INSERT INTO cavemen (lastname, firstname, occupation) VALUES ('Flintstone', 'Wilma', {'Mom', 'Cook'}); \n\n>> INSERT INTO cavemen (lastname, firstname, occupation) VALUES ('Rubble', 'Betty', {'Mom', 'Cook'});  \n\n>> APPLY BATCH;"
+    },
+    {
+      "title": "Retrieve Rows",
+      "description": "## Cassandra Queries\n\nLet's warm up with the basic select query.\n\n>> SELECT * from cavemen;\n\nAs with other Query Languages, you can specify the fields you want to get back.\n\n>> SELECT lastname, firstname, occupation from cavemen;\n\nNow, I'd really like to be able to query on that set of occupations.  In order to query against a collection, an index needs to be created on the column.\n\n>> CREATE INDEX job_idx ON cavemen ( occupation );\n\nOK, now what happens if we query against that field?\n\n>> SELECT * FROM cavemen WHERE occupation CONTAINS 'Mom';\n\nJust like we can add data using JSON, we can retrieve our results in JSON as well.  This works at the table and individual column level.\n\n>> select json lastname, firstname, occupation from cavemen;\n\nSimple equality is an easy way to find what you want.\n\n>> SELECT * FROM cavemen WHERE lastname = 'Flintstone' ORDER BY firstname ASC;\n\nAnd Cassandra supports ordering and looking for elements of a list as well as common aggregation functions such as SUM, COUNT.\n\n>> SELECT * FROM cavemen WHERE lastname = 'Flintstone' ORDER BY firstname ASC LIMIT 1;\n\n>> SELECT * FROM cavemen WHERE lastname IN ('Flintstone', 'Rubble') ;\n\n>> SELECT count(lastname) FROM cavemen WHERE occupation CONTAINS 'Mom';\n\n"
+    },
+    {
+      "title": "Challenge: Add data",
+      "description": "## Challenge: Add data\n\nIn the cavebabies table, add entries for bam bam and pebbles, and have them each include two or more toys.  Change the table so that you can search for the babies by toy name.\nWrite a query asking for the baby matching one of the toys.\n"
+    },
+    {
+      "title": "Solution: Add data",
+      "description": "## Solution: Add data\n\n### Put the babies into the table\n\n>> INSERT INTO cavebabies (lastname, firstname, toys) VALUES ('Flintstone', 'Pebbles', {'rattle', 'cracker'});\n\n>> INSERT INTO cavebabies (lastname, firstname, toys) VALUES ('Rubble', 'Bam Bam', {'hammer', 'cracker'});\n\nNow that there's babies in there, how would you ask for a specific baby?  We'll need an index to make this work.\n\n>> CREATE INDEX baby_idx ON cavebabies ( toys );\n\n>> SELECT * FROM cavebabies WHERE toys CONTAINS 'rattle';"
+    }
+  ]
+}
