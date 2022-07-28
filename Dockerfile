@@ -27,8 +27,7 @@ RUN chown -R gitpod:gitpod /workspace
 
 COPY --chown=gitpod:gitpod /root/config/.bashrc /home/gitpod/.bashrc
 
-RUN curl https://downloads.datastax.com/enterprise/cqlsh-astra.tar.gz
-
+RUN url https://downloads.datastax.com/enterprise/cqlsh-astra-20201104-bin.tar.gz --output /home/gitpod/cqlsh-astra.tar.gz
 RUN pip3 install httpie-astra cqlsh
 
 EXPOSE 8888
