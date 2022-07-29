@@ -19,7 +19,7 @@ RUN apt-get clean
 RUN curl -L https://deb.nodesource.com/setup_16.x | bash \
     && apt-get update -yq \
 	&& apt-get install nodejs
-RUN npm install --location=global astra-setup-linkedin axios node-jq
+RUN npm install --location=global astra-setup-linkedin@0.2.5 axios node-jq
 
 RUN sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
 #RUN chmod 777 /usr/lib/node_modules/astra-setup/node_modules/node-jq/bin/jq
@@ -28,6 +28,8 @@ RUN chown -R gitpod:gitpod /workspace
 COPY --chown=gitpod:gitpod /root/config/.bashrc /home/gitpod/.bashrc
 
 RUN curl https://downloads.datastax.com/enterprise/cqlsh-astra-20201104-bin.tar.gz --output /home/gitpod/cqlsh-astra.tar.gz
+RUN curl tar xvf /home/gitpod/cqlsh-astra.tar.gz
+RUN tar xvf 
 RUN pip3 install httpie-astra cqlsh
 
 EXPOSE 8888
