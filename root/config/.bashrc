@@ -109,7 +109,3 @@ fi
 alias astra-setup="node /home/gitpod/.nvm/versions/node/v16.16.0/lib/node_modules/astra-setup-linkedin/src/astra-setup.js"
 alias git-remote="/bin/bash /workspace/resources/git-remote"
 alias cqlsh='/home/gitpod/cqlsh-astra/bin/cqlsh --secure-connect-bundle=/home/gitpod/.cassandra/bootstrap.zip -u $ASTRA_DB_CLIENT_ID -p $ASTRA_DB_CLIENT_SECRET'
-
-
-
-
