@@ -1,0 +1,6 @@
+[authentication]
+username = ${ASTRA_DB_CLIENT_ID}
+password = ${ASTRA_DB_CLIENT_SECRET}
+
+[connection]
+secure_connect_bundle = ~/.cassandra/bootstrap.zip
