@@ -25,12 +25,13 @@ RUN sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/
 #RUN chmod 777 /usr/lib/node_modules/astra-setup/node_modules/node-jq/bin/jq
 RUN chown -R gitpod:gitpod /workspace
 RUN mkdir -p /home/gitpod/.cassandra
-RUN chown -R gitpod:gitpod /home/gitpod/.cassandra
 
 COPY --chown=gitpod:gitpod /root/config/.bashrc /home/gitpod/.bashrc
 
 RUN curl https://downloads.datastax.com/enterprise/cqlsh-astra-20201104-bin.tar.gz --output /home/gitpod/.cassandra/cqlsh-astra.tar.gz
 RUN tar xvf /home/gitpod/.cassandra/cqlsh-astra.tar.gz
+RUN chown -R gitpod:gitpod /home/gitpod/.cassandra
+
 RUN cat /root/config/cqlshrc >> /home/gitpod/.cassandra/cqlshrc
 
 RUN pip3 install httpie-astra cqlsh
