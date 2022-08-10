@@ -30,7 +30,7 @@ COPY --chown=gitpod:gitpod /root/config/.bashrc /home/gitpod/.bashrc
 
 RUN curl https://downloads.datastax.com/enterprise/cqlsh-astra-20201104-bin.tar.gz --output /home/gitpod/.cassandra/cqlsh-astra.tar.gz
 RUN chdir /home/gitpod/.cassandra/
-RUN tar xvf cqlsh-astra.tar.gz
+RUN tar xvf /home/gitpod/.cassandra/cqlsh-astra.tar.gz
 RUN chown -R gitpod:gitpod /home/gitpod/.cassandra
 
 #RUN cat /workspace/root/config/cqlshrc >> /home/gitpod/.cassandra/cqlshrc
