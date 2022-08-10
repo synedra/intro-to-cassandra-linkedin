@@ -31,7 +31,12 @@ COPY --chown=gitpod:gitpod /root/config/.bashrc /home/gitpod/.bashrc
 
 RUN curl https://downloads.datastax.com/enterprise/cqlsh-astra-20201104-bin.tar.gz --output /home/gitpod/.cassandra/cqlsh-astra.tar.gz
 RUN tar xvf /home/gitpod/.cassandra/cqlsh-astra.tar.gz
-COPY --chown=gitpod:gitpod /root/config/cqlshrc /home/gitpod/.cassandra
+RUN echo "[authentication]\
+username = ${ASTRA_DB_CLIENT_ID}\
+password = ${ASTRA_DB_CLIENT_SECRET}\
+\
+[connection]\
+" >> /home/gitpod/.cassandra/cqlshrc
 RUN pip3 install httpie-astra cqlsh
 
 EXPOSE 8888
