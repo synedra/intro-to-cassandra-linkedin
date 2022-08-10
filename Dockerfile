@@ -32,7 +32,7 @@ RUN curl https://downloads.datastax.com/enterprise/cqlsh-astra-20201104-bin.tar.
 RUN tar xvf /home/gitpod/.cassandra/cqlsh-astra.tar.gz
 RUN chown -R gitpod:gitpod /home/gitpod/.cassandra
 
-RUN cat /workspace/root/config/cqlshrc >> /home/gitpod/.cassandra/cqlshrc
+#RUN cat /workspace/root/config/cqlshrc >> /home/gitpod/.cassandra/cqlshrc
 
 RUN pip3 install httpie-astra cqlsh
 
