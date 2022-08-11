@@ -1,5 +1,5 @@
 image: 
-  file: Dockerfile
+  file: README.md
 
 vscode:
   extensions:
