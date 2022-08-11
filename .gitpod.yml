@@ -1,3 +1,6 @@
+image: 
+  file: Dockerfile
+  
 vscode:
   extensions:
     - vsls-contrib.codetour
@@ -18,7 +21,7 @@ github:
     addLabel: false
 ports:
   - port: 8888
-    onOpen: open-preview
+    onOpen: open-browser
     visibility: public
   - port: 3000
     onOpen: ignore 
