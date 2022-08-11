@@ -1,5 +1,3 @@
-<!--- STARTEXCLUDE --->
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/synedra/linkedin-cassandra)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/synedra/intro-to-cassandra-linkedin)
 
 
